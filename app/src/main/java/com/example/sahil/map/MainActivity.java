@@ -30,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final String[] old_marker = {""};
         final long[] distance = {500000};
         ArrayList<Marker> markersinmap=new ArrayList<Marker>(
         );
+        final Marker[] currentmarker = {null};
 
         Mapbox.getInstance(this, "pk.eyJ1IjoiaW1zYWhpbDAwNyIsImEiOiJjamx6YThjdmYxdWdvM3FwMXRha3NhNXBvIn0.BEEOPuIRxnlBcpIRq01oug");
         setContentView(R.layout.activity_main);
@@ -185,19 +185,20 @@ ArrayList<Marker> markers=new ArrayList<Marker>();
 
 
 
-
                 mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
 
                     @Override
                     public boolean onMarkerClick(@NonNull Marker marker) {
-
+                      try{  currentmarker[0].hideInfoWindow();}catch (Exception e){}
+                        currentmarker[0] =marker;
                         LatLngBounds.Builder builder = new LatLngBounds.Builder();
+
 
 
                         int i=0;
                         if(!markersinmap.contains(marker))
-                            distance[0] = 500000;
-                        markersinmap.clear();
+                        {distance[0] = 500000;
+                        markersinmap.clear();}
                         for (Marker m : markers) {
                             if(marker.getPosition().distanceTo(m.getPosition())<= distance[0]) {
                                 markersinmap.add(m);
@@ -208,13 +209,14 @@ ArrayList<Marker> markers=new ArrayList<Marker>();
                         }
                         Log.i("hey","size of bound="+markersinmap.size());
                         if(i==1){
+                            markersinmap.clear();
                             CameraPosition position = new CameraPosition.Builder()
                                     .target(new LatLng(marker.getPosition().getLatitude(),marker.getPosition().getLongitude())) // Sets the new camera position
                                     .zoom(10) // Sets the zoom
                                     .tilt(30) // Set the camera tilt
                                     .build(); // Creates a CameraPosition from the builder
                             mapboxMap.animateCamera(CameraUpdateFactory
-                                    .newCameraPosition(position), 1000);// Builds the CameraPosition object from the buil
+                                    .newCameraPosition(position), 600);// Builds the CameraPosition object from the buil
 
                             marker.showInfoWindow(mapboxMap,mapView);
                             return true;
@@ -223,12 +225,13 @@ ArrayList<Marker> markers=new ArrayList<Marker>();
                         distance[0] /=4;
                         LatLngBounds bounds = builder.build();
 
-                        mapboxMap.easeCamera(CameraUpdateFactory.newLatLngBounds(bounds, 50), 1000);
-
-
+                        mapboxMap.easeCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100), 300);
 
 
                         return true;
+
+
+
                     }
                 });
 
