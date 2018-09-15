@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         final long[] distance = {500000};
         ArrayList<Marker> markersinmap=new ArrayList<Marker>(
         );
+
         final Marker[] currentmarker = {null};
 
         Mapbox.getInstance(this, "pk.eyJ1IjoiaW1zYWhpbDAwNyIsImEiOiJjamx6YThjdmYxdWdvM3FwMXRha3NhNXBvIn0.BEEOPuIRxnlBcpIRq01oug");
@@ -45,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
         Icon female=iconFactory.fromBitmap(bitmapIcon);
         bitmapIcon = BitmapFactory.decodeResource(getResources(), R.drawable.male);
         Icon male=iconFactory.fromBitmap(bitmapIcon);
+        bitmapIcon = BitmapFactory.decodeResource(getResources(), R.drawable.locationgroup);
+        Icon locationgroup=iconFactory.fromBitmap(bitmapIcon);
+
 
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
@@ -62,6 +66,14 @@ ArrayList<Marker> markers=new ArrayList<Marker>();
                         .snippet("male")
                 );
                 markers.add(m);
+
+                m=mapboxMap.addMarker(new MarkerOptions()
+                        .icon(locationgroup)
+                        .position(new LatLng(29.05506, 75.72147))
+                        .title("Location 1")
+                );
+                markers.add(m);
+
                 //----------------
                 m=mapboxMap.addMarker(new MarkerOptions()
                         .icon(male)
@@ -104,6 +116,13 @@ ArrayList<Marker> markers=new ArrayList<Marker>();
                 );                markers.add(m);
 
                 m=mapboxMap.addMarker(new MarkerOptions()
+                        .icon(locationgroup)
+                        .position(new LatLng(16.1521, 78.0599))
+                        .title("Location 4")
+                );
+                markers.add(m);
+
+                m=mapboxMap.addMarker(new MarkerOptions()
                         .icon(female)
                         .position(new LatLng(15.163734, 75.294641))
                         .title("Lisa")
@@ -124,7 +143,12 @@ ArrayList<Marker> markers=new ArrayList<Marker>();
                         .title("Sam")
                         .snippet("male")
                 );                markers.add(m);
-
+                m=mapboxMap.addMarker(new MarkerOptions()
+                        .icon(locationgroup)
+                        .position(new LatLng(22.70386, 75.8386))
+                        .title("Location 2")
+                );
+                markers.add(m);
 
                 m=mapboxMap.addMarker(new MarkerOptions()
                         .icon(female)
@@ -141,7 +165,12 @@ ArrayList<Marker> markers=new ArrayList<Marker>();
                         .title("charles")
                         .snippet("male")
                 );                markers.add(m);
-
+                m=mapboxMap.addMarker(new MarkerOptions()
+                        .icon(locationgroup)
+                        .position(new LatLng(21.23290, 81.8593))
+                        .title("Location 5")
+                );
+                markers.add(m);
 
                 m=mapboxMap.addMarker(new MarkerOptions()
                         .icon(male)
@@ -165,11 +194,74 @@ ArrayList<Marker> markers=new ArrayList<Marker>();
                         .snippet("male")
                 );                markers.add(m);
 
-
+                m=mapboxMap.addMarker(new MarkerOptions()
+                        .icon(locationgroup)
+                        .position(new LatLng(15.4501, 74.6386))
+                        .title("Location 3")
+                );
+                markers.add(m);
                 m=mapboxMap.addMarker(new MarkerOptions()
                         .icon(female)
                         .position(new LatLng(16.0000,75.0125))
                         .title("Elizabeth")
+                        .snippet("female")
+                );                markers.add(m);
+                m=mapboxMap.addMarker(new MarkerOptions()
+                        .icon(male)
+                        .position(new LatLng(25.04008,85.5149))
+                        .title("Rekha")
+                        .snippet("male")
+                );                markers.add(m);
+
+                m=mapboxMap.addMarker(new MarkerOptions()
+                        .icon(male)
+                        .position(new LatLng(25.04008,85.5149))
+                        .title("Rekha")
+                        .snippet("male")
+                );                markers.add(m);
+
+                m=mapboxMap.addMarker(new MarkerOptions()
+                        .icon(male)
+                        .position(new LatLng(24.8001183,85.58252))
+                        .title("Tony")
+                        .snippet("male")
+                );                markers.add(m);
+                m=mapboxMap.addMarker(new MarkerOptions()
+                        .icon(female)
+                        .position(new LatLng(25.61546582486291,85.5509484))
+                        .title("Pia")
+                        .snippet("male")
+                );                markers.add(m);
+
+                m=mapboxMap.addMarker(new MarkerOptions()
+                        .icon(female)
+                        .position(new LatLng(25.160655666,84.3217470))
+                        .title("Sanskriti")
+                        .snippet("female")
+                );                markers.add(m);
+
+                m=mapboxMap.addMarker(new MarkerOptions()
+                        .icon(female)
+                        .position(new LatLng(23.980599356547984,84.36859429629317))
+                        .title("Rahul")
+                        .snippet("male")
+                );                markers.add(m);
+                m=mapboxMap.addMarker(new MarkerOptions()
+                        .icon(male)
+                        .position(new LatLng(21.270065808112236,81.86060970310723))
+                        .title("Ramesh")
+                        .snippet("male")
+                );                markers.add(m);
+                m=mapboxMap.addMarker(new MarkerOptions()
+                        .icon(female)
+                        .position(new LatLng(21.192730511107428,81.83167298359854))
+                        .title("Saloni")
+                        .snippet("female")
+                );                markers.add(m);
+                m=mapboxMap.addMarker(new MarkerOptions()
+                        .icon(female)
+                        .position(new LatLng(21.27138061700491,81.83193856602918))
+                        .title("Veronica")
                         .snippet("female")
                 );                markers.add(m);
 
@@ -181,9 +273,20 @@ ArrayList<Marker> markers=new ArrayList<Marker>();
                         .snippet("female")
                 );                markers.add(m);
 
+                m=mapboxMap.addMarker(new MarkerOptions()
+                        .icon(locationgroup)
+                        .position(new LatLng(24.8627, 84.8340))
+                        .title("Location 6")
+                );
+                markers.add(m);
 
 
-
+mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
+    @Override
+    public void onMapClick(@NonNull LatLng point) {
+        Log.i("new location",point.toString());
+    }
+});
 
                 mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
 
